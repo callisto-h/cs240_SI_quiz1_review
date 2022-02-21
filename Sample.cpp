@@ -12,12 +12,12 @@ Sample::Sample(){
 }
 
 Sample::Sample(int n, std::string const &str){
-    std::cout << "**VALUE CONSTRUCTOR CALLED**" << std::endl; 
-    
+    std::cout << "**VALUE CONSTRUCTOR CALLED**" << std::endl;
+
     num = n;
 
     // What does this line do?
-    // What does 'new' do, and what 
+    // What does 'new' do, and what
     // constructor is being called?
     str_pointer = new std::string(str);
 }
@@ -35,30 +35,34 @@ Sample::Sample(Sample const &s){
         this->str_pointer = nullptr;
         return;
     }
-    
+
 
     // Complicated line. What are we
     // doing, and what are we AVOIDING
     // with this?
     this->str_pointer = new std::string(*(s.str_pointer));
-    
+
     // Hint: start from the inside of parenthesis
     // and work your way out.
-    // Hint: what would 
+    // Hint: what would
     // 'this->str_pointer = s.str_pointer' do?
 }
 
-void Sample::operator=(Sample const &s){
+Sample & Sample::operator=(Sample const &s){
     std::cout << "**OVERLOADED = OPERATOR CALLED**" << std::endl;
 
     // Notice any similarities to the copy constructor?
-    if(this == &s){return;}
+    if(this == &s){return *this;}
+
     this->num = s.num;
+
     if(s.str_pointer == nullptr){
         this->str_pointer = nullptr;
-        return;
+        return *this;
     }
+
     this->str_pointer = new std::string(*(s.str_pointer));
+    return *this;
 }
 
 
@@ -66,7 +70,7 @@ void Sample::operator=(Sample const &s){
 
 void Sample::set_str_pointer_memory(std::string const &str){
 
-    // Why would we want this check? 
+    // Why would we want this check?
     // When could str_pointer be nulllptr?
     // Hint: Check the constructors
     if(str_pointer == nullptr){
@@ -103,7 +107,7 @@ std::string Sample::get_str_from_str_pointer() const{
 }
 
 
-// What's going on here? 
+// What's going on here?
 // Which of these two functions
 // is *more* correct?
 void Sample::set_num_plus_5_value(int n){
@@ -125,4 +129,3 @@ Sample::~Sample(){
     // Why set it to nullptr after deletion?
     str_pointer = nullptr;
 }
-

@@ -21,7 +21,9 @@ class Sample{
 
         // This isn't a constructor, but we
         // need it... Why?
-        void operator=(Sample const &s);
+        // Why do we return a 'Sample&' instead
+        // of void?
+        Sample & operator=(Sample const &s);
 
         // How is the `const` keyword
         // different in these two cases?
@@ -36,7 +38,7 @@ class Sample{
         // What *should* the destructor do?
         ~Sample();
 
-        // What does this do? 
+        // What does this do?
         // Why do we define it as
         // a friend function?
         friend std::ostream& operator<<(std::ostream &o, Sample const &s){
