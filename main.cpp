@@ -14,11 +14,11 @@ int main(){
     // these lines call?
     // Professor Lewis said this would
     // be a quiz question!
-    Sample a(0, s1);
-    Sample b(a);
-    Sample c = a;
-    Sample d;
-    d = c;
+    Sample a(0, s1);    // value constructor
+    Sample b(a);        // copy constructor
+    Sample c = a;       // copy constructor
+    Sample d;           // default constructor
+    d = c;              // assignment operator
 
     std::cout << "================================================" << std::endl;
 
@@ -36,7 +36,7 @@ int main(){
 
     c.set_str_pointer_memory(s3);
     c.set_num_plus_5_reference(n);
-    
+
     d.set_str_pointer_memory(s4);
     d.set_num_plus_5_value(n);
 
@@ -47,9 +47,9 @@ int main(){
     std::cout << "b.) " << b << std::endl;
     std::cout << "c.) " << c << std::endl;
     std::cout << "d.) " << d << std::endl;
-    
+
     std::cout << "================================================" << std::endl;
 
     return 0;
-    
+
 }
