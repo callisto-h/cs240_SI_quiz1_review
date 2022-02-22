@@ -25,9 +25,12 @@ Sample::Sample(int n, std::string const &str){
 Sample::Sample(Sample const &s){
     std::cout << "**COPY CONSTRUCTOR CALLED**" << std::endl;
 
-    // What does this do?
-    // Why do we bother?
-    if(this == &s){return;}
+    // Note: This check isn't needed in the Copy Constructor
+    // since an object cannot be passed in to its own constructor.
+    // Something like `Sample a(a)` would not be valid.
+    // I'm just leaving this here, commented out because
+    // it was there during our 2/21/22 session
+    // if(this == &s){return;}
 
     this->num = s.num;
 
@@ -51,7 +54,8 @@ Sample::Sample(Sample const &s){
 Sample & Sample::operator=(Sample const &s){
     std::cout << "**OVERLOADED = OPERATOR CALLED**" << std::endl;
 
-    // Notice any similarities to the copy constructor?
+    // What does this do?
+    // Why do we bother?
     if(this == &s){return *this;}
 
     this->num = s.num;
